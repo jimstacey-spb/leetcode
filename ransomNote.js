@@ -34,19 +34,17 @@ function loopSolution (ransomNote, magazine) {
  */
 function mapSolution (ransomNote, magazine) {
     const magazineMap = {};
-    let mi = magazine.length;
-    while (mi--) {
-        if (!magazineMap[magazine[mi]]) {
-            magazineMap[magazine[mi]] = 1;
+    for (const char of magazine) {
+        if (!magazineMap[char]) {
+            magazineMap[char] = 1;
         } else {
-            magazineMap[magazine[mi]] += 1;
+            magazineMap[char] += 1;
         }
     }
 
-    let ri = ransomNote.length;
-    while (ri--) {
-        if (magazineMap[ransomNote[ri]]) {
-            magazineMap[ransomNote[ri]]--;
+    for (const char of ransomNote) {
+        if (magazineMap[char]) {
+            magazineMap[char]--;
         } else {
             return false;
         }
