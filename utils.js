@@ -23,7 +23,61 @@ function runTestCases(method, testcases) {
     })
 }
 
+/**
+ * Definition for singly-linked list.
+ * @typedef {Object} ListNode
+ * @property {number} val
+ * @property {(ListNode|null)} next
+ */
+function ListNode(val, next) {
+    this.val = (val===undefined ? 0 : val)
+    this.next = (next===undefined ? null : next)
+}
+
+const SLL = {
+    /**
+     * @param {array} arr
+     * @return ListNode
+     */
+    fromArray: (arr) => {
+        arr = [...arr].reverse();
+        let result = undefined;
+        for (let i = 0; i < arr.length; i++) {
+            result = new ListNode(arr[i], result);
+        }
+        return result;
+    },
+    /**
+     * @param {ListNode} l
+     * @return array
+     */
+    toArray(l) {
+        let list = {...l};
+        const arr = [];
+        while (list.hasOwnProperty('val')) {
+            arr.push(list.val);
+            list = {...list.next};
+        }
+        return arr;
+    },
+    /**
+     * @param {ListNode} l
+     * @return number
+     */
+    toNumber(l) {
+        let list = {...l};
+        let string = '';
+        while (list.hasOwnProperty('val')) {
+            string += list.val;
+            list = {...list.next};
+        }
+        return parseInt(string);
+    }
+}
+
 module.exports = {
     assert,
     runTestCases,
+    ListNode,
+    SLL,
 };
