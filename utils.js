@@ -75,9 +75,23 @@ const SLL = {
     }
 }
 
+function getRandomInt(max) {
+    return Math.floor(Math.random() * max);
+}
+
+function generateRandomIntegerArray (l) {
+    const result = [];
+    for (let i = 0; i < l; i++) {
+        result.push(getRandomInt(100));
+    }
+    return result
+}
+
 module.exports = {
     assert,
     runTestCases,
     ListNode,
     SLL,
+    getRandomInt,
+    generateRandomIntegerArray,
 };
